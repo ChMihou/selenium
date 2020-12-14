@@ -19,7 +19,7 @@ public class SeleniumController {
     @RequestMapping("/testSelenium")
     @ResponseBody
     public boolean testSelenium(Offer param) throws Exception {
-        String filePath = "C:\\Users\\Administrator\\Desktop\\2.xlsx";
+        String filePath = "C:\\Users\\Administrator\\Desktop\\2.xls";
         String path = "C:\\Users\\Administrator\\Desktop\\ua.txt";
         int i = 10;
         Random random = new Random();
