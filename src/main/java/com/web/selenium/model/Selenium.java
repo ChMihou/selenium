@@ -49,8 +49,8 @@ public class Selenium {
             webDriver.get(param.getUrl());
             //输入账号 密码并登陆系统
             Thread.sleep(1000);
-            if (param.getTypeOffer() == 1) {
-                typeOffer.typeOffer1(webDriver, offer);
+            if (param.getTypeOffer() == 142196) {
+                typeOffer.typeOffer142196(webDriver, offer);
             }
         }
     }
