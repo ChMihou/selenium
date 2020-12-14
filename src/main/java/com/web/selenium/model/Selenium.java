@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class Selenium {
 
     public static void Selenium(Offer offer, String ua, Offer param) throws InterruptedException {
-        if (param.getTypeOffer() != null && param.getTypeOffer() > 0 && param.getTypeOffer() < 4) {
+        if (param.getTypeOffer() != null) {
             Thread.sleep(3000);
             //获取Ip
             System.out.println(getIp());
