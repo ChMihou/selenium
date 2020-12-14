@@ -1,5 +1,6 @@
-package com.selenium.web.selenium;
+package com.web.selenium.model;
 
+import com.web.selenium.pojo.Offer;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;

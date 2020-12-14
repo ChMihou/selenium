@@ -1,4 +1,4 @@
-package com.selenium.web.selenium;
+package com.web.selenium.pojo;
 
 import java.io.Serializable;
 
@@ -37,6 +37,16 @@ public class Offer implements Serializable {
     private String submit2;
 
     private String url;
+
+    private Integer typeOffer;
+
+    public Integer getTypeOffer() {
+        return typeOffer;
+    }
+
+    public void setTypeOffer(Integer typeOffer) {
+        this.typeOffer = typeOffer;
+    }
 
     public String getUrl() {
         return url;
@@ -200,6 +210,7 @@ public class Offer implements Serializable {
                 ", submit1='" + submit1 + '\'' +
                 ", submit2='" + submit2 + '\'' +
                 ", url='" + url + '\'' +
+                ", typeOffer='" + typeOffer + '\'' +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.selenium.web.selenium;
+package com.web.selenium.model;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class readtxt {
+public final class readtxt {
     public static List<String> readTxt(String path) throws IOException {
         // 使用一个字符串集合来存储文本中的路径 ，也可用String []数组
         List<String> list = new ArrayList<>();

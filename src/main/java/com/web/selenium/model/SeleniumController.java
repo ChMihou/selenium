@@ -1,5 +1,6 @@
-package com.selenium.web.selenium;
+package com.web.selenium.model;
 
+import com.web.selenium.pojo.Offer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,7 +21,7 @@ public class SeleniumController {
     public boolean testSelenium(Offer param) throws Exception {
         String filePath = "D:/offer.xls";
         String path = "D:/work.txt";
-        int i = 3;
+        int i = 10;
         List<Offer> offers = ExcelImport.importExcelAction(filePath);
         List<String> uas = readtxt.readTxt(path);
         Random random = new Random();

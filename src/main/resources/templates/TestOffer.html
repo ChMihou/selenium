@@ -13,7 +13,7 @@
     .d1 {
         border: 5px solid red;
         width: 680px;
-        height: 450px;
+        height: 500px;
         text-align: center;
         line-height: 40px;
         margin: 0 auto;
@@ -68,6 +68,10 @@
             <input style="width: 180px;height: 30px" id="submit2" type="text" value="" name="submit2">
         </div>
         <div class="layui-input-block">
+            <label class="layui-form-label">测试类型</label>
+            <input style="width: 180px;height: 30px" id="typeOffer" type="number" value="" name="typeOffer">
+        </div>
+        <div class="layui-input-block">
             <label class="layui-form-label">URL:</label>
             <input style="width: 480px;height: 30px" id="url" type="text" value="" name="url">
         </div>
@@ -96,6 +100,7 @@
         let phone = $("#phone").val();
         let state = $("#state").val();
         let url = $("#url").val();
+        let typeOffer = $("#typeOffer").val();
         let submit1 = $("#submit1").val();
         let submit2 = $("#submit2").val();
         $.ajax({
@@ -116,6 +121,7 @@
                 phone: phone,
                 state: state,
                 url: url,
+                typeOffer: typeOffer,
                 submit1: submit1,
                 submit2: submit2
             },
