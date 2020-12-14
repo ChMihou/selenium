@@ -19,12 +19,14 @@ public class SeleniumController {
     @RequestMapping("/testSelenium")
     @ResponseBody
     public boolean testSelenium(Offer param) throws Exception {
-        String filePath = "D:/offer.xls";
-        String path = "D:/work.txt";
+        String filePath = "C:\\Users\\Administrator\\Desktop\\2.xlsx";
+        String path = "C:\\Users\\Administrator\\Desktop\\ua.txt";
         int i = 10;
+        Random random = new Random();
         List<Offer> offers = ExcelImport.importExcelAction(filePath);
         List<String> uas = readtxt.readTxt(path);
-        Random random = new Random();
+        System.out.println(param.toString());
+        System.out.println(offers.get(Math.abs(random.nextInt(offers.size()))));
         while (i > 0) {
             int uaNumber = Math.abs(random.nextInt(uas.size()));
             int offerNumber = Math.abs(random.nextInt(offers.size()));

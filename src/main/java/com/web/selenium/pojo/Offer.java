@@ -24,7 +24,9 @@ public class Offer implements Serializable {
 
     private String country;
 
-    private String city;
+    private String Address;
+
+    private String cc;
 
     private String email;
 
@@ -40,12 +42,38 @@ public class Offer implements Serializable {
 
     private Integer typeOffer;
 
+    private String realPhone;
+
+    public String getRealPhone() {
+        return realPhone;
+    }
+
+    public void setRealPhone(String realPhone) {
+        this.realPhone = realPhone;
+    }
+
     public Integer getTypeOffer() {
         return typeOffer;
     }
 
     public void setTypeOffer(Integer typeOffer) {
         this.typeOffer = typeOffer;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getCc() {
+        return cc;
+    }
+
+    public void setCc(String cc) {
+        this.cc = cc;
     }
 
     public String getUrl() {
@@ -98,14 +126,6 @@ public class Offer implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getEmail() {
@@ -169,6 +189,8 @@ public class Offer implements Serializable {
     }
 
     public String getDay() {
+        if (day == null)
+            return day = "20";
         return day;
     }
 
@@ -176,7 +198,7 @@ public class Offer implements Serializable {
         this.day = day;
     }
 
-    public Offer(String cardNumber, String lastName, String name, String year, String month, String cvv, String postcode, String country, String city, String email, String phone, String state) {
+    public Offer(String cardNumber, String lastName, String name, String year, String month, String cvv, String postcode, String country, String address, String email, String phone, String state, String cc, String realPhone) {
         this.cardNumber = cardNumber;
         this.LastName = lastName;
         this.name = name;
@@ -185,10 +207,12 @@ public class Offer implements Serializable {
         this.cvv = cvv;
         this.postcode = postcode;
         this.country = country;
-        this.city = city;
+        this.Address = address;
         this.email = email;
         this.phone = phone;
         this.state = state;
+        this.cc = cc;
+        this.realPhone = realPhone;
     }
 
     @Override
@@ -203,14 +227,15 @@ public class Offer implements Serializable {
                 ", cvv='" + cvv + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
+                ", Address='" + Address + '\'' +
+                ", cc='" + cc + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", state='" + state + '\'' +
                 ", submit1='" + submit1 + '\'' +
                 ", submit2='" + submit2 + '\'' +
                 ", url='" + url + '\'' +
-                ", typeOffer='" + typeOffer + '\'' +
+                ", typeOffer=" + typeOffer +
                 '}';
     }
 }

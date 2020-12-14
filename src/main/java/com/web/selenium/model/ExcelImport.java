@@ -66,39 +66,46 @@ public class ExcelImport {
                 HSSFCell cardNum = row.getCell(0);
                 String cardNumber = getValue(cardNum);
                 //持有人姓氏
-                HSSFCell LName = row.getCell(1);
+                HSSFCell LName = row.getCell(6);
                 String lastName = getValue(LName);
                 //持有人名字
-                HSSFCell Name = row.getCell(2);
+                HSSFCell Name = row.getCell(5);
                 String name = getValue(Name);
                 //年份
-                HSSFCell Year = row.getCell(3);
+                HSSFCell Year = row.getCell(1);
                 String year = getValue(Year);
                 //月份
-                HSSFCell Month = row.getCell(4);
+                HSSFCell Month = row.getCell(2);
                 String month = getValue(Month);
                 //日
-                HSSFCell Cvv = row.getCell(5);
+                HSSFCell Cvv = row.getCell(3);
                 String cvv = getValue(Cvv);
                 //国家
-                HSSFCell Country = row.getCell(6);
+                HSSFCell Country = row.getCell(10);
                 String country = getValue(Country);
                 //城市
-                HSSFCell City = row.getCell(7);
-                String city = getValue(City);
+                HSSFCell Address = row.getCell(9);
+                String city = getValue(Address);
                 //邮箱
-                HSSFCell Email = row.getCell(8);
+                HSSFCell Email = row.getCell(7);
                 String email = getValue(Email);
                 //state
-                HSSFCell State = row.getCell(9);
+                HSSFCell State = row.getCell(11);
                 String state = getValue(State);
-                HSSFCell Phone = row.getCell(10);
+                HSSFCell Phone = row.getCell(8);
                 String phone = getValue(Phone);
                 //卡code
-                HSSFCell Postcode = row.getCell(12);
+                HSSFCell Postcode = row.getCell(4);
                 String postcode = getValue(Postcode);
 
-                Offer offer = new Offer(cardNumber, lastName, name, year, month, cvv, postcode, country, city, email, phone, state);
+                //日
+                HSSFCell CC = row.getCell(12);
+                String cc = getValue(CC);
+
+                HSSFCell realPhone = row.getCell(13);
+                String realphone = getValue(realPhone);
+
+                Offer offer = new Offer(cardNumber, lastName, name, year, month, cvv, postcode, country, city, email, phone, state,cc,realphone);
 
                 list.add(offer);
             }

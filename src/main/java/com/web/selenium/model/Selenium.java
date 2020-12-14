@@ -37,7 +37,7 @@ public class Selenium {
                 options.addArguments("User-Agent=" + ua);
                 webDriver = new ChromeDriver(options);
             }
-            System.setProperty("webdriver.chrome.driver", "d://chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\Desktop\\cmh\\chromedriver.exe");
             //火狐浏览器
 //        System.setProperty("webdriver.gecko.driver", "c://geckodriver.exe");
 //        WebDriver webDriver = new FirefoxDriver();
@@ -50,11 +50,7 @@ public class Selenium {
             //输入账号 密码并登陆系统
             Thread.sleep(1000);
             if (param.getTypeOffer() == 1) {
-                typeOffer.typeOffer1(webDriver, offer, param);
-            } else if (param.getTypeOffer() == 2) {
-                typeOffer.typeOffer2(webDriver, offer, param);
-            } else if (param.getTypeOffer() == 3) {
-                typeOffer.typeOffer3(webDriver, offer, param);
+                typeOffer.typeOffer1(webDriver, offer);
             }
         }
     }
