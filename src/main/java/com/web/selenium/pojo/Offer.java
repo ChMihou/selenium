@@ -236,6 +236,7 @@ public class Offer implements Serializable {
                 ", submit2='" + submit2 + '\'' +
                 ", url='" + url + '\'' +
                 ", typeOffer=" + typeOffer +
+                ", realPhone='" + realPhone + '\'' +
                 '}';
     }
 }

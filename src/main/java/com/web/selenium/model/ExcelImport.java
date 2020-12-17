@@ -1,11 +1,11 @@
 package com.web.selenium.model;
 
 import com.web.selenium.pojo.Offer;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -41,9 +41,9 @@ public class ExcelImport {
 
     public static List<Offer> importExcelAction(String filePath) throws Exception {
 
-        XSSFWorkbook wookbook = new XSSFWorkbook(new FileInputStream(filePath));
+        HSSFWorkbook wookbook = new HSSFWorkbook(new FileInputStream(filePath));
 
-        XSSFSheet sheet = wookbook.getSheet("Sheet1");
+        HSSFSheet sheet = wookbook.getSheet("Sheet1");
 
         //获取到Excel文件中的所有行数
         int rows = sheet.getPhysicalNumberOfRows();
@@ -51,9 +51,9 @@ public class ExcelImport {
         //遍历行
         List<Offer> list = new ArrayList<Offer>();
 
-        for (int i = 0; i < rows; i++) {
+        for (int i = 1; i < rows; i++) {
             // 读取左上端单元格
-            XSSFRow row = sheet.getRow(i);
+            HSSFRow row = sheet.getRow(i);
 
             // 行不为空
             if (row != null) {
@@ -63,49 +63,52 @@ public class ExcelImport {
                 int cells = row.getPhysicalNumberOfCells();
 
                 //卡号
-                XSSFCell cardNum = row.getCell(0);
+                row.getCell(0).setCellType(CellType.STRING);
+                HSSFCell cardNum = row.getCell(0);
                 String cardNumber = getValue(cardNum);
                 //持有人姓氏
-                XSSFCell LName = row.getCell(6);
+                HSSFCell LName = row.getCell(6);
                 String lastName = getValue(LName);
                 //持有人名字
-                XSSFCell Name = row.getCell(5);
+                HSSFCell Name = row.getCell(5);
                 String name = getValue(Name);
                 //年份
-                XSSFCell Year = row.getCell(1);
+                HSSFCell Year = row.getCell(1);
                 String year = getValue(Year);
                 //月份
-                XSSFCell Month = row.getCell(2);
+                HSSFCell Month = row.getCell(2);
                 String month = getValue(Month);
                 //日
-                XSSFCell Cvv = row.getCell(3);
+                HSSFCell Cvv = row.getCell(3);
                 String cvv = getValue(Cvv);
                 //国家
-                XSSFCell Country = row.getCell(10);
+                HSSFCell Country = row.getCell(10);
                 String country = getValue(Country);
                 //城市
-                XSSFCell Address = row.getCell(9);
+                HSSFCell Address = row.getCell(9);
                 String city = getValue(Address);
                 //邮箱
-                XSSFCell Email = row.getCell(7);
+                HSSFCell Email = row.getCell(7);
                 String email = getValue(Email);
                 //state
-                XSSFCell State = row.getCell(11);
+                HSSFCell State = row.getCell(11);
                 String state = getValue(State);
-                XSSFCell Phone = row.getCell(8);
+
+                row.getCell(8).setCellType(CellType.STRING);
+                HSSFCell Phone = row.getCell(8);
                 String phone = getValue(Phone);
                 //卡code
-                XSSFCell Postcode = row.getCell(4);
+                HSSFCell Postcode = row.getCell(4);
                 String postcode = getValue(Postcode);
 
                 //日
-                XSSFCell CC = row.getCell(12);
+                HSSFCell CC = row.getCell(12);
                 String cc = getValue(CC);
 
-                XSSFCell realPhone = row.getCell(13);
+                row.getCell(13).setCellType(CellType.STRING);
+                HSSFCell realPhone = row.getCell(13);
                 String realphone = getValue(realPhone);
-
-                Offer offer = new Offer(cardNumber, lastName, name, year, month, cvv, postcode, country, city, email, phone, state, cc, realphone);
+                Offer offer = new Offer(cardNumber, lastName, name, year, month, cvv, postcode, country, city, email, phone, state, cc, "0" + realphone);
 
                 list.add(offer);
             }
@@ -113,7 +116,7 @@ public class ExcelImport {
         return list;
     }
 
-    private static String getValue(XSSFCell xSSFCell) {
+    private static String getValue(HSSFCell xSSFCell) {
         if (null == xSSFCell) {
             return "";
         }
@@ -122,7 +125,11 @@ public class ExcelImport {
             return String.valueOf(xSSFCell.getBooleanCellValue());
         } else if (xSSFCell.getCellTypeEnum() == CellType.NUMERIC) {
             // 返回数值类型的值
-            return String.valueOf(xSSFCell.getNumericCellValue()).replace(".0", "");
+            String Number = String.valueOf(xSSFCell.getNumericCellValue());
+            if (Number.contains(",")) {
+                Number = Number.replace(",", "");
+            }
+            return Number.replace(".0", "");
         } else {
             // 返回字符串类型的值
             return String.valueOf(xSSFCell.getStringCellValue());

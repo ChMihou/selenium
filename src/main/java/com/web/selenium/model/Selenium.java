@@ -17,6 +17,7 @@ public class Selenium {
         if (param.getTypeOffer() != null) {
             Thread.sleep(3000);
             //获取Ip
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\Desktop\\cmh\\chromedriver.exe");
             System.out.println(getIp());
             DesiredCapabilities capabilities;
             ChromeOptions options = new ChromeOptions();
@@ -37,7 +38,6 @@ public class Selenium {
                 options.addArguments("User-Agent=" + ua);
                 webDriver = new ChromeDriver(options);
             }
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\Desktop\\cmh\\chromedriver.exe");
             //火狐浏览器
 //        System.setProperty("webdriver.gecko.driver", "c://geckodriver.exe");
 //        WebDriver webDriver = new FirefoxDriver();

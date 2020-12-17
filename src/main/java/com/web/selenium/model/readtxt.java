@@ -30,9 +30,13 @@ public final class readtxt {
     }
 
     public static void main(String[] args) throws IOException {
-        String path = "d:\\work.txt";
+        String path = "d:\\User-Agent.txt";
+        int i = 10;
         for (String txt : readtxt.readTxt(path)) {
             System.out.println(txt);
+            if (i < 0)
+                break;
+            i--;
         }
     }
 }

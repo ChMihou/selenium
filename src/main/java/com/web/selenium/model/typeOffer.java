@@ -9,12 +9,12 @@ public class typeOffer {
         webDriver.findElement(new By.ByName("firstname")).sendKeys(offer.getName());
         webDriver.findElement(new By.ByName("lastname")).sendKeys(offer.getLastName());
         webDriver.findElement(new By.ByName("email")).sendKeys(offer.getEmail());
-        webDriver.findElement(new By.ByName("phone")).sendKeys(offer.getRealPhone());
+        webDriver.findElement(new By.ByName("phone")).sendKeys(offer.getRealPhone() + "");
         Thread.sleep(3000);
         webDriver.findElement(new By.ByName("reg")).click();
         Thread.sleep(3000);
         webDriver.findElement(new By.ByName("expires_year")).sendKeys(offer.getYear());
-        webDriver.findElement(new By.ByName("cardNumber")).sendKeys(offer.getCardNumber());
+        webDriver.findElement(new By.ByName("cardNumber")).sendKeys(offer.getCardNumber() + "");
         webDriver.findElement(new By.ByName("csc")).sendKeys(offer.getCvv());
 //        webDriver.findElement(new By.ByName("city")).sendKeys(offer.getAddress());
 //        webDriver.findElement(new By.ByName("country")).sendKeys(offer.getCountry());
