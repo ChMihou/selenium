@@ -51,6 +51,10 @@ public class Selenium {
             Thread.sleep(1000);
             if (param.getTypeOffer() == 142196) {
                 typeOffer.typeOffer142196(webDriver, offer);
+            } else if (param.getTypeOffer() == 142355) {
+                typeOffer.typeOffer142355(webDriver, offer);
+            } else if (param.getTypeOffer() == 141237) {
+                typeOffer.typeOffer141237(webDriver, offer);
             }
         }
     }
