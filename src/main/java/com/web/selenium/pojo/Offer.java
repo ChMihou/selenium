@@ -6,6 +6,8 @@ public class Offer implements Serializable {
 
     private static final long serialVersionUID = 2288735996591764103L;
 
+    private Integer id;
+
     private String cardNumber;
 
     private String LastName;
@@ -192,6 +194,14 @@ public class Offer implements Serializable {
         if (day == null)
             return day = "20";
         return day;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setDay(String day) {

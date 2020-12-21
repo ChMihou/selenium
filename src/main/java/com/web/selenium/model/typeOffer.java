@@ -24,7 +24,7 @@ public class typeOffer {
 //        webDriver.findElement(new By.ByName("")).sendKeys(offer.getState());
         Thread.sleep(3000);
         webDriver.findElement(new By.ByName("submit")).click();
-        Thread.sleep(3000);
+        Thread.sleep(50000);
         webDriver.quit();
     }
 
@@ -50,20 +50,21 @@ public class typeOffer {
 //        webDriver.findElement(new By.ByName("")).sendKeys(offer.getDay());
         webDriver.findElement(new By.ByName("card.cvv")).sendKeys(offer.getCvv());
 //        webDriver.findElement(new By.ByName("")).sendKeys(offer.getState());
-        webDriver.findElement(new By.ByName("//input[@class='wpwl-control wpwl-control-expiry']")).sendKeys(offer.getMonth()+offer.getYear().substring(2));
+        webDriver.findElement(new By.ByName("//input[@class='wpwl-control wpwl-control-expiry']")).sendKeys(offer.getMonth() + offer.getYear().substring(2));
         Thread.sleep(3000);
         webDriver.findElement(new By.ByXPath("//input[@class='wpwl-button wpwl-button-pay']")).click();
-        Thread.sleep(3000);
+        Thread.sleep(50000);
         webDriver.quit();
     }
+
     public static void typeOffer141237(WebDriver webDriver, Offer offer) throws InterruptedException {
         webDriver.findElement(new By.ByName("firstname")).sendKeys(offer.getName());
         webDriver.findElement(new By.ByName("lastname")).sendKeys(offer.getLastName());
         webDriver.findElement(new By.ByName("email")).sendKeys(offer.getEmail());
         Thread.sleep(3000);
-        webDriver.findElement(new By.ByName("reg")).click();
+        webDriver.findElement(new By.ByXPath("//button[@class='claim submit-button submit-button--emailandaddress']")).click();
         Thread.sleep(3000);
-        webDriver.findElement(new By.ByName("cardholder")).sendKeys(offer.getLastName());
+        webDriver.findElement(new By.ByName("cardholder")).sendKeys(offer.getName() + " " + offer.getLastName());
         webDriver.findElement(new By.ByName("monthexpiredate")).sendKeys(offer.getMonth());
         webDriver.findElement(new By.ByName("yearexpiredate")).sendKeys(offer.getYear().substring(2));
         webDriver.findElement(new By.ByName("cardnumber")).sendKeys(offer.getCardNumber() + "");

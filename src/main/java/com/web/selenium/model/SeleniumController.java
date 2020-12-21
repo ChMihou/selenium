@@ -21,7 +21,7 @@ public class SeleniumController {
     public boolean testSelenium(Offer param) throws Exception {
         String filePath = "C:\\Users\\Administrator\\Desktop\\cmh\\user.xls";
         String path = "C:\\Users\\Administrator\\Desktop\\cmh\\User-Agent.txt";
-        int i = 10;
+        int i = 5;
         Random random = new Random();
         List<Offer> offers = ExcelImport.importExcelAction(filePath);
         List<String> uas = readtxt.readTxt(path);

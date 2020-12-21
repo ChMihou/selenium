@@ -6,12 +6,12 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.util.CellRangeAddress;
 
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Description : TODO导入excel
@@ -38,7 +38,6 @@ public class ExcelImport {
     }
 
     //导入Excel数据
-
     public static List<Offer> importExcelAction(String filePath) throws Exception {
 
         HSSFWorkbook wookbook = new HSSFWorkbook(new FileInputStream(filePath));
@@ -134,5 +133,99 @@ public class ExcelImport {
             // 返回字符串类型的值
             return String.valueOf(xSSFCell.getStringCellValue());
         }
+    }
+
+    public void exportExcel(List<Offer> offers, HttpServletResponse response) throws IOException {
+
+        HSSFWorkbook wb = new HSSFWorkbook();
+
+        //编辑excel表格的页脚
+        HSSFSheet sheet = wb.createSheet("获取excel测试表格");
+        //创建第一个单元格
+        HSSFRow row = sheet.createRow(0);
+        //设置行高
+        row.setHeight((short) (26.25 * 20));
+        //为第一行单元格设值
+        row.createCell(0).setCellValue("用户信息列表");
+
+        /*为标题设计空间
+         * firstRow从第1行开始
+         * lastRow从第1行结束
+         *从第1个单元格开始
+         *从第3个单元格结束
+         */
+        CellRangeAddress rowRegion = new CellRangeAddress(0, 0, 0, 2);
+        sheet.addMergedRegion(rowRegion);
+
+		/*CellRangeAddress columnRegion = new CellRangeAddress(1,4,0,0);
+		sheet.addMergedRegion(columnRegion);*/
+
+
+        /*
+         * 动态获取数据库列 sql语句 select COLUMN_NAME from INFORMATION_SCHEMA.Columns where table_name='user' and table_schema='test'
+         * 第一个table_name 表名字
+         * 第二个table_name 数据库名称
+         * */
+        //创建第二行表格
+        row = sheet.createRow(1);
+        //设置行高
+        row.setHeight((short) (22.50 * 20));
+        //为第一个单元格设值
+        row.createCell(0).setCellValue("cardNumber");
+        //为第二个单元格设值
+        row.createCell(1).setCellValue("email");
+        //为第三个单元格设值
+        row.createCell(2).setCellValue("phone");
+        //为第四个单元格设值
+        row.createCell(2).setCellValue("address");
+        //为第五个单元格设值
+        row.createCell(2).setCellValue("country");
+
+        for (int i = 0; i < offers.size(); i++) {
+            //创建第i+2行单元表格
+            row = sheet.createRow(i + 2);
+            Offer offer = offers.get(i);
+            row.createCell(0).setCellValue(offer.getCardNumber());
+            row.createCell(1).setCellValue(offer.getEmail());
+            row.createCell(2).setCellValue(offer.getPhone());
+            row.createCell(3).setCellValue(offer.getAddress());
+            row.createCell(4).setCellValue(offer.getCountry());
+        }
+        //设置默认行高
+        sheet.setDefaultRowHeight((short) (16.5 * 20));
+        //列宽自适应，
+        for (int i = 0; i <= offers.size() + 2; i++) {
+            sheet.autoSizeColumn(i);
+        }
+        /*
+         * 下载到指定文件夹内
+         */
+        OutputStream os = response.getOutputStream();
+        String resultName = "";
+        String ctxPath = "C:\\Users\\Administrator\\Desktop\\cmh";
+        String name = new SimpleDateFormat("ddHHmmss").format(new Date());
+        String fileName = name + "users.xlsx";
+        String bizPath = "files";
+        String nowday = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        File file = new File(ctxPath + File.separator + bizPath + File.separator + nowday);
+        if (!file.exists()) {
+            file.mkdirs();// 创建文件根目录
+        }
+        String savePath = file.getPath() + File.separator + fileName;
+        resultName = bizPath + File.separator + nowday + File.separator + fileName;
+        if (resultName.contains("\\")) {
+            resultName = resultName.replace("\\", "/");
+        }
+        System.out.print(resultName);
+        System.out.print(savePath);
+        // 响应到客户端需要下面注释的代码
+//            this.setResponseHeader(response, filename);
+//            OutputStream os = response.getOutputStream(); //响应到服务器
+        // 保存到当前路径savePath
+        os = new FileOutputStream(savePath);
+
+        wb.write(os);
+        os.flush();
+        os.close();
     }
 }
