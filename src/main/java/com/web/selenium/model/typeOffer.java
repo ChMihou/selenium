@@ -35,16 +35,16 @@ public class typeOffer {
         webDriver.findElement(new By.ByName("bd_month")).sendKeys("L");
         webDriver.findElement(new By.ByName("bd_year")).sendKeys("1996");
         webDriver.findElement(new By.ByName("phone")).sendKeys(offer.getPhone() + "");
-        webDriver.findElement(new By.ByXPath("//input[@class='p-acceptterms__input']\"")).click();
+        webDriver.findElement(new By.ById("acceptterms")).click();
         Thread.sleep(3000);
         webDriver.findElement(new By.ByXPath("//button[@class='submit-button submit-button--emailandaddress']")).click();
         Thread.sleep(5000);
-        webDriver.findElement(new By.ByName("cardnumber")).sendKeys(offer.getCardNumber() + "");
-        webDriver.findElement(new By.ByName("cardholder")).sendKeys(offer.getLastName());
+        webDriver.findElement(new By.ByName("card.number")).sendKeys(offer.getCardNumber());
+        webDriver.findElement(new By.ByName("card.holder")).sendKeys(offer.getName()+" "+offer.getLastName());
         webDriver.findElement(new By.ByName("card.cvv")).sendKeys(offer.getCvv());
-        webDriver.findElement(new By.ByName("//input[@class='wpwl-control wpwl-control-expiry']")).sendKeys(offer.getMonth() + offer.getYear().substring(2));
+        webDriver.findElement(new By.ByXPath("//input[@class='wpwl-control wpwl-control-expiry']")).sendKeys(offer.getMonth() + offer.getYear().substring(2));
         Thread.sleep(3000);
-        webDriver.findElement(new By.ByXPath("//input[@class='wpwl-button wpwl-button-pay']")).click();
+        webDriver.findElement(new By.ByXPath("//button[@class='wpwl-button wpwl-button-pay']")).click();
         Thread.sleep(50000);
         webDriver.quit();
     }
