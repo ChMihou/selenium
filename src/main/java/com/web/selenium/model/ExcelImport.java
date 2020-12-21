@@ -135,7 +135,7 @@ public class ExcelImport {
         }
     }
 
-    public void exportExcel(List<Offer> offers, HttpServletResponse response) throws IOException {
+    public void exportExcel(List<Offer> offers) throws IOException {
 
         HSSFWorkbook wb = new HSSFWorkbook();
 
@@ -177,9 +177,11 @@ public class ExcelImport {
         //为第三个单元格设值
         row.createCell(2).setCellValue("phone");
         //为第四个单元格设值
-        row.createCell(2).setCellValue("address");
+        row.createCell(3).setCellValue("address");
         //为第五个单元格设值
-        row.createCell(2).setCellValue("country");
+        row.createCell(4).setCellValue("country");
+        //为第六个单元格设值
+        row.createCell(0).setCellValue("OfferId");
 
         for (int i = 0; i < offers.size(); i++) {
             //创建第i+2行单元表格
@@ -190,6 +192,7 @@ public class ExcelImport {
             row.createCell(2).setCellValue(offer.getPhone());
             row.createCell(3).setCellValue(offer.getAddress());
             row.createCell(4).setCellValue(offer.getCountry());
+            row.createCell(5).setCellValue(offer.getId());
         }
         //设置默认行高
         sheet.setDefaultRowHeight((short) (16.5 * 20));
@@ -197,10 +200,6 @@ public class ExcelImport {
         for (int i = 0; i <= offers.size() + 2; i++) {
             sheet.autoSizeColumn(i);
         }
-        /*
-         * 下载到指定文件夹内
-         */
-        OutputStream os = response.getOutputStream();
         String resultName = "";
         String ctxPath = "C:\\Users\\Administrator\\Desktop\\cmh";
         String name = new SimpleDateFormat("ddHHmmss").format(new Date());
@@ -222,8 +221,11 @@ public class ExcelImport {
 //            this.setResponseHeader(response, filename);
 //            OutputStream os = response.getOutputStream(); //响应到服务器
         // 保存到当前路径savePath
-        os = new FileOutputStream(savePath);
 
+        /*
+         * 下载到指定文件夹内
+         */
+        OutputStream os = new FileOutputStream(savePath);
         wb.write(os);
         os.flush();
         os.close();
