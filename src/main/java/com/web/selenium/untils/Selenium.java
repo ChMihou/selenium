@@ -1,5 +1,6 @@
-package com.web.selenium.model;
+package com.web.selenium.untils;
 
+import com.web.selenium.model.typeOffer;
 import com.web.selenium.pojo.Offer;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Selenium {
 
-    public static void Selenium(Offer offer, String ua, Offer param) throws InterruptedException {
+    public static void selenium(Offer offer, String ua, Offer param) throws InterruptedException {
         if (param.getTypeOffer() != null) {
             Thread.sleep(3000);
             //获取Ip

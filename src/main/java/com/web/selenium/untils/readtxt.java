@@ -1,4 +1,4 @@
-package com.web.selenium.model;
+package com.web.selenium.untils;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

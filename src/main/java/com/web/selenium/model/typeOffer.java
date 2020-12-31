@@ -35,7 +35,7 @@ public class typeOffer {
         webDriver.findElement(new By.ByName("bd_month")).sendKeys("L");
         webDriver.findElement(new By.ByName("bd_year")).sendKeys("1996");
         webDriver.findElement(new By.ByName("phone")).sendKeys(offer.getPhone() + "");
-        webDriver.findElement(new By.ById("acceptterms")).click();
+        webDriver.findElement(new By.ByClassName("p-acceptterms__input")).click();
         Thread.sleep(3000);
         webDriver.findElement(new By.ByXPath("//button[@class='submit-button submit-button--emailandaddress']")).click();
         Thread.sleep(5000);

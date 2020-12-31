@@ -1,4 +1,4 @@
-package com.web.selenium.model;
+package com.web.selenium;
 
 public class test {
     public static void main(String[] args){

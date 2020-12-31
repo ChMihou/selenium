@@ -1,6 +1,9 @@
 package com.web.selenium.model;
 
 import com.web.selenium.pojo.Offer;
+import com.web.selenium.untils.ExcelImport;
+import com.web.selenium.untils.Selenium;
+import com.web.selenium.untils.readtxt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +33,7 @@ public class SeleniumController {
             int offerNumber = Math.abs(random.nextInt(offers.size()));
             System.out.println("Fake browser access:" + uas.get(uaNumber));
             System.out.println("Fake identity login"+offers.get(offerNumber).toString());
-            Selenium.Selenium(offers.get(offerNumber), uas.get(uaNumber), param);
+            Selenium.selenium(offers.get(offerNumber), uas.get(uaNumber), param);
             i--;
         }
         return true;

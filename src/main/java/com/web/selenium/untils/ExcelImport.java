@@ -1,4 +1,4 @@
-package com.web.selenium.model;
+package com.web.selenium.untils;
 
 import com.web.selenium.pojo.Offer;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -8,15 +8,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.util.CellRangeAddress;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-/**
- * @Description : TODO导入excel
- * @date : Mar 31, 2018 5:17:14 PM
- */
 
 public class ExcelImport {
 
@@ -135,6 +129,7 @@ public class ExcelImport {
         }
     }
 
+    //导出excel表格
     public void exportExcel(List<Offer> offers) throws IOException {
 
         HSSFWorkbook wb = new HSSFWorkbook();
