@@ -130,7 +130,7 @@ public class ExcelImport {
     }
 
     //导出excel表格
-    public void exportExcel(List<Offer> offers) throws IOException {
+    public static void exportExcel(List<Offer> offers,Integer OfferId) throws IOException {
 
         HSSFWorkbook wb = new HSSFWorkbook();
 
@@ -198,7 +198,7 @@ public class ExcelImport {
         String resultName = "";
         String ctxPath = "C:\\Users\\Administrator\\Desktop\\cmh";
         String name = new SimpleDateFormat("ddHHmmss").format(new Date());
-        String fileName = name + "users.xlsx";
+        String fileName = "Offer:"+OfferId+"--"+name + ".xls";
         String bizPath = "files";
         String nowday = new SimpleDateFormat("yyyyMMdd").format(new Date());
         File file = new File(ctxPath + File.separator + bizPath + File.separator + nowday);

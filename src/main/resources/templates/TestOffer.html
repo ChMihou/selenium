@@ -56,7 +56,9 @@
             dataType: "json",
             success: function (data) {
                 if (data) {
-                    confirm("添加成功");
+                    confirm("已经自动化测试5次！")
+                    document.getElementById("typeOffer").value = data.typeOffer;
+                    document.getElementById("url").value = data.url;
                 }
             }
         });

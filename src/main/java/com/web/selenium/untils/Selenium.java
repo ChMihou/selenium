@@ -32,10 +32,6 @@ public class Selenium {
                 capabilities.setCapability(ChromeOptions.CAPABILITY, headlessOptions);
                 webDriver = new ChromeDriver(capabilities);
             } else {
-                options.addArguments("Accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
-                options.addArguments("Accept-Encoding=gzip, deflate, sdch");
-                options.addArguments("Accept-Language=fr-be,zh;q=0.8");
-                options.addArguments("Upgrade-Insecure-Requests=1");
                 options.addArguments("User-Agent=" + ua);
                 webDriver = new ChromeDriver(options);
             }
@@ -57,6 +53,12 @@ public class Selenium {
                 typeOffer.typeOffer142355(webDriver, offer);
             } else if (param.getTypeOffer() == 141237) {
                 typeOffer.typeOffer141237(webDriver, offer);
+            } else if (param.getTypeOffer() == 143139) {
+                typeOffer.typeOffer143139(webDriver, offer);
+            } else if (param.getTypeOffer() == 143138) {
+                typeOffer.typeOffer143138(webDriver, offer);
+            } else if (param.getTypeOffer() == 142395) {
+                typeOffer.typeOffer142395(webDriver, offer);
             }
         }
     }
