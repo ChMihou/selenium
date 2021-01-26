@@ -1,11 +1,10 @@
 package com.web.selenium.untils;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public final class readtxt {
@@ -27,6 +26,24 @@ public final class readtxt {
         isr.close();
         fis.close();
         return list;
+    }
+
+    public static void writeFileContext(List<String> strings) throws Exception {
+        String ctxPath = "C:\\Users\\Administrator\\Desktop\\cmh";
+        String name = new SimpleDateFormat("ddHHmmss").format(new Date());
+        String fileName = "Ip:" + name + ".txt";
+        String bizPath = "files";
+        String nowday = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        File file = new File(ctxPath + File.separator + bizPath + File.separator + nowday);
+        //如果没有文件就创建
+        if (!file.isFile()) {
+            file.createNewFile();
+        }
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file.getPath() + File.separator + fileName));
+        for (String l : strings) {
+            writer.write(l + "\r\n");
+        }
+        writer.close();
     }
 
     public static void main(String[] args) throws IOException {

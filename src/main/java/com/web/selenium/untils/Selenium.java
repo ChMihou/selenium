@@ -9,12 +9,13 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.InetAddress;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Selenium {
 
-    public static void selenium(Offer offer, String ua, Offer param) throws InterruptedException {
+    public static void selenium(Offer offer, String ua, Offer param, List<Offer> offerList) throws InterruptedException {
         if (param.getTypeOffer() != null) {
             Thread.sleep(3000);
             //获取Ip
@@ -48,17 +49,17 @@ public class Selenium {
             Thread.sleep(1000);
             offer.setId(param.getTypeOffer());
             if (param.getTypeOffer() == 142196) {
-                typeOffer.typeOffer142196(webDriver, offer);
+                typeOffer.typeOffer142196(webDriver, offer,offerList);
             } else if (param.getTypeOffer() == 142355) {
-                typeOffer.typeOffer142355(webDriver, offer);
+                typeOffer.typeOffer142355(webDriver, offer,offerList);
             } else if (param.getTypeOffer() == 141237) {
-                typeOffer.typeOffer141237(webDriver, offer);
+                typeOffer.typeOffer141237(webDriver, offer,offerList);
             } else if (param.getTypeOffer() == 143139) {
-                typeOffer.typeOffer143139(webDriver, offer);
+                typeOffer.typeOffer143139(webDriver, offer,offerList);
             } else if (param.getTypeOffer() == 143138) {
-                typeOffer.typeOffer143138(webDriver, offer);
+                typeOffer.typeOffer143138(webDriver, offer,offerList);
             } else if (param.getTypeOffer() == 142395) {
-                typeOffer.typeOffer142395(webDriver, offer);
+                typeOffer.typeOffer142395(webDriver, offer,offerList);
             }
         }
     }
